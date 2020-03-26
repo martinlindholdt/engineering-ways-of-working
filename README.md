@@ -95,6 +95,8 @@ Services should be:-
 - Technical debt as it refers to Data is the responsiblity of the architect chapters across Nuuday
 
 # Security
+- Each service must register with a CMDB service. This service must notify those in the OWNERS file when a valurability is discovered on CVE.
+- All services must use best efforts run with the latest version of dependencies possible to limit security concerns from 3rd party libraries.
 - Build pipelines must do container scanning
 - No manual changes allowed
 - No evelvated privileges allowed
