@@ -47,8 +47,6 @@ In order to defend and preserve the honor of the profession of computer programm
 - Changes to the major number will require detailed review by senior engineers
 - The implementation of the API is the responsbility of the owning Tribe. The implementation can and should change as necessary without formal review external to that owning tribe.
 
-### Roadmap
-
 ## Public Documentation
 - Documenation is only mandated on Public API and our Data. 
 
