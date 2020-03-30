@@ -94,13 +94,15 @@ Services should be:-
 
 # Security
 - Each service must register with a CMDB service. This service must notify those in the OWNERS file when a valurability is discovered on CVE.
-- All services must use best efforts run with the latest version of dependencies possible to limit security concerns from 3rd party libraries.
-- Build pipelines must do container scanning
+- All services must use best efforts run with the latest version of dependencies possible to limit security concerns from 3rd party libraries. Build pipelines must do container scanning. Use tools like Snyk or JFrog Xray for scanning as they alert teams after release about valurbilities 
 - No manual changes allowed
-- No evelvated privileges allowed
+- No evelvated privileges allowed on VMs
 - Use the Forigate firewall
 - Use network microsegmentation
 - Services must use JWT tokens issues by an IDP. Username/password are not permitted
+- Run HTTPS everywhere
+- Never put plain text secrets into VCS. Ideally use a KeyVault the management secret lifecycles
+- Use docker in ROOTLESS mode when possible
 
 # Privacy
 - Never log PPI data in log files. Use masks to hide data where necessary. This is a feature available on most modern logging frameworks.
