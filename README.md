@@ -95,12 +95,12 @@ Services should be:
 - No asset can be over 4 years old from first commit. 
 - All assets over 4 years are scheduled for decomm and automatically tagged as deprecated on [https.//api.nuuday.dk](https://api.nuuday.dk)
 
-# Technical Debt
+## Technical Debt
 - All Assets require active development to reduce the risk of technical debt building up. SLIs/SLOs are used as indicators of "debt" 
 - When it becomes too expensive to operate within the SLO window, the service is considered to be technically too expensive and will be rewritten. Reference: [https://cloudplatform.googleblog.com/2018/07/sre-fundamentals-slis-slas-and-slos.html](https://cloudplatform.googleblog.com/2018/07/sre-fundamentals-slis-slas-and-slos.html)
 - Technical debt that refers to _Data_ is the responsibility of the architect chapters across Nuuday. 
 
-# Security
+## Security
 - Each service must be registered with a CMDB service. This can be through a push or pull mechanism.
 - All services must use best efforts run with the latest version of dependencies possible to limit security concerns from 3rd party libraries. 
 	- Build pipelines must do container scanning - or utilise enforced scanning in the repository. Similar scanning is required for non-container pipelines. 
@@ -114,7 +114,7 @@ Services should be:
 - Use the Nuuday FortiGate firewall. 
 - Use network microsegmentation.
 
-# Privacy
+## Privacy
 - Never log PPI data in log files. Use masks to hide data where necessary. This is a feature available on most modern logging frameworks.
 - Each squad needs at least one member aware of GDPR
 - Each squad needs an awareness of the difference between anonymisation of data, pseudonymisation of data and raw data as it is described in GDPR legislation. 
