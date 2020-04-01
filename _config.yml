@@ -1,1 +1,5 @@
-theme: jekyll-theme-cayman
+logo: "/assets/nuuday.png"
+remote_theme: pmarsceill/just-the-docs
+title: "Engineering Ways of Working"
+search_enabled: true
+heading_anchors: true
