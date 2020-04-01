@@ -1,4 +1,4 @@
-logo: "/assets/nuuday.png"
+logo: "https://github.com/nuuday/source-code-consolidation/raw/master/docs/assets/nuuday.png"
 remote_theme: pmarsceill/just-the-docs
 title: "Engineering Ways of Working"
 search_enabled: true
