@@ -1,8 +1,9 @@
-# Purpose of this document
+# Engineers Way of Working
+## Purpose of this document
 
 _Here, the engineers of Nuuday publish their agreed ways of working. The goal is to achieve complete squad autonomy while protecting Nuuday assets. Assets under protection are listed in full under "Asset Classes". While this document outlines what must be done for Nuuday assets, the document is written to provide solid and practical guidelines for squads also._
 
-# Our Oath
+## Our Oath
 In order to defend and preserve the honor of the profession of computer programmers, I Promise that, to the best of my ability and judgement:
 
 1. I will not produce harmful code.
@@ -17,8 +18,8 @@ In order to defend and preserve the honor of the profession of computer programm
 
 Ref. [https://blog.cleancoder.com/uncle-bob/2015/11/18/TheProgrammersOath.html](https://blog.cleancoder.com/uncle-bob/2015/11/18/TheProgrammersOath.html)
 
-# Assets
-## Protected Assets
+## Assets
+### Protected Assets
 _The primary protected assets are defined as **data**, **public APIs**, and **public documentation**. Asset ownership and asset versioning applies to all the protected assets._
  
 ### Data 
@@ -33,15 +34,14 @@ _The primary protected assets are defined as **data**, **public APIs**, and **pu
 - Description: 
 	- Squads can only communicate through API published on [https.//api.nuuday.dk](https://api.nuuday.dk).
 	- The API defined is understood as public. Those API are considered an asset of Nuuday. The API will respect symentic versioning as outline on [https://semver.org/](https://semver.org/)
-	- Changes to the major number will require detailed review by senior engineers
+	- Changes to the X component of the version number will require detailed review by senior engineer
 	- The implementation of the API is the responsbility of the owning Tribe. The implementation can and should change as necessary without formal review external to that owning tribe.
 
 ### Public documentation
 - Definition: 
 	- _Public documentation_ is any documentation accompanying a _Public API_ or any large area documentation available under [https.//docs.nuuday.dk](https://docs.nuuday.dk)
 	- _Public documentation_ describes the public interface for an application. Internal documentation is not a subject for this document, but documentation is always kept with the asset source code. 
-- Documentation is only mandated on Public API and our Data. 
-
+- Documentation is only mandated on Public API and our Data.
 
 ## Asset Versioning
 - All assets are to be versions using [https://semver.org/](https://semver.org/)
@@ -50,7 +50,7 @@ _The primary protected assets are defined as **data**, **public APIs**, and **pu
 - Ownership of an asset is documented in the CODEOWNERS file of the application git repo. 
 - Every asset will have an owner or owner group, that is also understood to be maintainer. 
 
-# Technologies
+## Technologies
 We use the [ThoughtWorks](https://www.thoughtworks.com/radar) concept of a _technology radar_ to inform teams which technologies are most widely used in Nuuday. 
 
 We use the following description for the rings of the radar. The radar is open for all in Nuuday, however only those with operational responsibility for production systems will promote technologies through the radar.
@@ -63,12 +63,11 @@ We use the following description for the rings of the radar. The radar is open f
 	- **ASSESS** — Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.
 	- **HOLD** — Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.
 
-# Operations
+## Operations
 
 **DevSecOps** is the primary method we run operations. 
 
 Services should be:
-
 - **Auditable**: Provide an audit trail for all changes to the production environment. For Example:
 	- Follow GitOps – descriptive and traceable definitions of applications and environments
 	- Document every manual step, no exceptions 
@@ -87,12 +86,12 @@ Services should be:
 	- Prometheus 
 	- AppDynamics
 
-# Costs
+## Costs
 - No technology should be introduced without producing a MVP reference implementation first. 
 - Should the cost of the reference implementation exceeded 100.000 DKK, the technology is dropped and cost accepted as sunk cost. 
 - This does not make it impossible to spend above that amount on an asset - but we _have_ to be able to demonstrate value in small increments. 
 
-# Asset Lifecycle
+## Asset Lifecycle
 - No asset can be over 4 years old from first commit. 
 - All assets over 4 years are scheduled for decomm and automatically tagged as deprecated on [https.//api.nuuday.dk](https://api.nuuday.dk)
 
@@ -102,18 +101,18 @@ Services should be:
 - Technical debt that refers to _Data_ is the responsibility of the architect chapters across Nuuday. 
 
 # Security
-- Each service must register with a CMDB service. This service must notify those in the CODEOWNERS file when a vulnerability is discovered on CVE.
+- Each service must be registered with a CMDB service. This can be through a push or pull mechanism.
 - All services must use best efforts run with the latest version of dependencies possible to limit security concerns from 3rd party libraries. 
 	- Build pipelines must do container scanning - or utilise enforced scanning in the repository. Similar scanning is required for non-container pipelines. 
-	- Use tools like Snyk or JFrog Xray for scanning as they alert teams after release about vulnerabilities. 
+	- Applications should use tools like Snyk or JFrog Xray for scanning as they alert teams after release about vulnerabilities. 
 - No manual changes allowed.
-- No elevated privileges allowed on VMs. 
-- Use the Nuuday FortiGate firewall. 
-- Use network microsegmentation
+- No elevated privileges allowed on VMs.
+- Use docker in ROOTLESS mode when possible.
 - Services must use JWT tokens issues by an IDP. Username/password are not permitted. 
 - Run HTTPS everywhere. 
 - Never put plain text secrets into VCS. Ideally use a KeyVault that manage secret lifecycle. 
-- Use docker in ROOTLESS mode when possible. 
+- Use the Nuuday FortiGate firewall. 
+- Use network microsegmentation.
 
 # Privacy
 - Never log PPI data in log files. Use masks to hide data where necessary. This is a feature available on most modern logging frameworks.
